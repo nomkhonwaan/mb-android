@@ -25,7 +25,7 @@
             android:id="@+id/btnSidebarToggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BTN_SIDEBAR_TOGGLE" />
+            android:text="btn" />
 
     </LinearLayout>
 
