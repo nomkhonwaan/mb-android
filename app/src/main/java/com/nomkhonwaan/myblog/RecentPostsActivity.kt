@@ -1,13 +1,13 @@
 package com.nomkhonwaan.myblog
 
-import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.os.Bundle
 
-class SecondActivity : AppCompatActivity() {
+class RecentPostsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second)
+        setContentView(R.layout.activity_recent_posts)
     }
 
 }
