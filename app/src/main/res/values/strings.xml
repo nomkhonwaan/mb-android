@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">myblog</string>
+    <string name="sidebar_close">CLOSE</string>
+    <string name="sidebar_home">Home</string>
+    <string name="sidebar_login_register">Login / Register</string>
+    <string name="sidebar_web_development">Web Development</string>
+    <string name="sidebar_web_design">Web Design</string>
+    <string name="sidebar_programming">Programming</string>
+    <string name="sidebar_devops">DevOps</string>
+    <string name="sidebar_life_style">Life Style</string>
+    <string name="sidebar_how_i_made_this_website">How I made this website</string>
 </resources>
