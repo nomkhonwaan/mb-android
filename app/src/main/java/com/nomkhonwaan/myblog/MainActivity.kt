@@ -1,9 +1,12 @@
 package com.nomkhonwaan.myblog
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import io.reactivex.Observable
@@ -36,25 +39,23 @@ class MainActivity : AppCompatActivity() {
 
             ibSidebarToggle.setOnClickListener(onToggleSidebar)
             ibSidebarClose.setOnClickListener(onToggleSidebar)
+            vPopupOverlay.setOnClickListener(onToggleSidebar)
         }
 
         sidebarToggleObservable.subscribe { isCollapsed ->
-            val animator = ValueAnimator.ofFloat(
-                    llApp.translationX,
-                    TypedValue.applyDimension(
+            val animatorSet = AnimatorSet()
+
+            animatorSet.playTogether(
+                    ObjectAnimator.ofFloat(llApp, "translationX", TypedValue.applyDimension(
                             TypedValue.COMPLEX_UNIT_DIP,
                             if (isCollapsed) -256f else 0f,
                             outMetrics
-                    )
+                    )),
+                    ObjectAnimator.ofFloat(vPopupOverlay, "alpha", if (isCollapsed) 0f else 0.16f)
             )
 
-            animator.addUpdateListener {
-                llApp.translationX = it.animatedValue as Float
-                llApp.requestLayout()
-            }
-
-            animator.duration = 400
-            animator.start()
+            animatorSet.duration = 400
+            animatorSet.start()
         }
     }
 
