@@ -1,8 +1,6 @@
 package com.nomkhonwaan.myblog
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
+import android.animation.*
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -45,6 +43,10 @@ class MainActivity : AppCompatActivity() {
         sidebarToggleObservable.subscribe { isCollapsed ->
             val animatorSet = AnimatorSet()
 
+            if (!isCollapsed) {
+                vPopupOverlay.visibility = View.VISIBLE
+            }
+
             animatorSet.playTogether(
                     ObjectAnimator.ofFloat(llApp, "translationX", TypedValue.applyDimension(
                             TypedValue.COMPLEX_UNIT_DIP,
@@ -55,9 +57,24 @@ class MainActivity : AppCompatActivity() {
             )
 
             animatorSet.duration = 400
+            animatorSet.addListener(object : Animator.AnimatorListener {
+                override fun onAnimationCancel(animation: Animator?) {
+                }
+
+                override fun onAnimationEnd(animation: Animator?) {
+                    if (isCollapsed) {
+                        vPopupOverlay.visibility = View.GONE
+                    }
+                }
+
+                override fun onAnimationRepeat(animation: Animator?) {
+                }
+
+                override fun onAnimationStart(animation: Animator?) {
+                }
+            })
             animatorSet.start()
         }
     }
-
 
 }

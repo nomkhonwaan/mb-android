@@ -6,11 +6,9 @@
 
     <ImageButton
         android:id="@+id/ibSidebarToggle"
-        android:layout_width="24dp"
+        android:layout_width="19.25dp"
         android:layout_height="24dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/fal_bars"
         android:backgroundTint="@color/colorIcon"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,11 +18,9 @@
 
     <ImageButton
         android:id="@+id/ibSearchToggle"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginTop="8dp"
         android:background="@drawable/fal_search"
         android:backgroundTint="@color/colorIcon"
         app:layout_constraintBottom_toBottomOf="parent"

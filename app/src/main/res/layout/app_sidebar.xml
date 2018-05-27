@@ -11,11 +11,9 @@
 
         <ImageButton
             android:id="@+id/ibSidebarClose"
-            android:layout_width="15dp"
-            android:layout_height="24dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="10dp"
+            android:layout_height="16dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginTop="8dp"
             android:background="@drawable/fal_times"
             android:backgroundTint="@color/colorIcon"
             app:layout_constraintBottom_toBottomOf="parent"
