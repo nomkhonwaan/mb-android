@@ -1,21 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/llApp"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:layout_marginStart="-256dp"
-    tools:context=".MainActivity">
-
-    <include layout="@layout/app_sidebar" />
-
-    <include layout="@layout/app_header" />
+    android:id="@+id/clRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/llAppMain"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/llApp"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:translationX="-256dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/inAppSidebar"
+            layout="@layout/app_sidebar"
+            android:layout_width="256dp"
+            android:layout_height="match_parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clAppMain"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <include
+                android:id="@+id/inAppHeader"
+                layout="@layout/app_header"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </android.support.constraint.ConstraintLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
