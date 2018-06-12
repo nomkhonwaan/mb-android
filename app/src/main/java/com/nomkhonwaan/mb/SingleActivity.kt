@@ -1,4 +1,4 @@
-package com.nomkhonwaan.myblog
+package com.nomkhonwaan.mb
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

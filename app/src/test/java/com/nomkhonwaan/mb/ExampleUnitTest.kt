@@ -1,4 +1,4 @@
-package com.nomkhonwaan.myblog
+package com.nomkhonwaan.mb
 
 import org.junit.Test
 

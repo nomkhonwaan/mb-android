@@ -1,4 +1,4 @@
-package com.nomkhonwaan.myblog
+package com.nomkhonwaan.mb
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

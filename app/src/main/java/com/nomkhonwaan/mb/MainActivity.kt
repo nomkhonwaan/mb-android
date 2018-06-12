@@ -1,16 +1,12 @@
-package com.nomkhonwaan.myblog
+package com.nomkhonwaan.mb
 
 import android.animation.*
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import io.reactivex.Observable
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_header.*
-import kotlinx.android.synthetic.main.app_sidebar.*
 
 class MainActivity : AppCompatActivity() {
 
