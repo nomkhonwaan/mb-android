@@ -30,7 +30,7 @@
             <include
                 android:id="@+id/appHeader"
                 layout="@layout/app_header"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="64dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -38,7 +38,19 @@
             <FrameLayout
                 android:id="@+id/appContent"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></FrameLayout>
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appHeader" />
+
+            <include
+                android:id="@+id/appFooter"
+                layout="@layout/app_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/appContent" />
 
             <View
                 android:id="@+id/popupOverlay"
@@ -51,7 +63,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </android.support.constraint.ConstraintLayout>
 
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
@@ -28,10 +29,10 @@ class MainActivity : AppCompatActivity() {
         setAppWidth(outMetrics)
         setSidebarAnimation(outMetrics)
 
-//        supportFragmentManager
-//                .beginTransaction()
-//                .add(appContent.id, RecentPostsFragment.newInstance())
-//                .commit()
+        supportFragmentManager
+                .beginTransaction()
+                .add(appContent.id, RecentPostsFragment.newInstance())
+                .commit()
     }
 
     private fun setAppWidth(outMetrics: DisplayMetrics) {
