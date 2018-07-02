@@ -25,16 +25,16 @@ class MainActivity : AppCompatActivity() {
         val outMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(outMetrics)
 
-        setApplicationWidth(outMetrics)
+        setAppWidth(outMetrics)
         setSidebarAnimation(outMetrics)
 
-        supportFragmentManager
-                .beginTransaction()
-                .add(appContent.id, RecentPostsFragment.newInstance())
-                .commit()
+//        supportFragmentManager
+//                .beginTransaction()
+//                .add(appContent.id, RecentPostsFragment.newInstance())
+//                .commit()
     }
 
-    private fun setApplicationWidth(outMetrics: DisplayMetrics) {
+    private fun setAppWidth(outMetrics: DisplayMetrics) {
         val appParams: ViewGroup.LayoutParams = app.layoutParams
         val appSidebarParams: ViewGroup.LayoutParams = appSidebar.layoutParams
         val appMainParams: ViewGroup.LayoutParams = appMain.layoutParams
