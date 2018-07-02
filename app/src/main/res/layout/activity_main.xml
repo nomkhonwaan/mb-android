@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/llApp"
+        android:id="@+id/app"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:orientation="horizontal"
@@ -17,26 +17,31 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include
-            android:id="@+id/inAppSidebar"
+            android:id="@+id/appSidebar"
             layout="@layout/app_sidebar"
             android:layout_width="256dp"
             android:layout_height="match_parent" />
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/clAppMain"
+            android:id="@+id/appMain"
             android:layout_width="0dp"
             android:layout_height="match_parent">
 
             <include
-                android:id="@+id/inAppHeader"
+                android:id="@+id/appHeader"
                 layout="@layout/app_header"
                 android:layout_width="0dp"
                 android:layout_height="64dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
+            <FrameLayout
+                android:id="@+id/appContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></FrameLayout>
+
             <View
-                android:id="@+id/vPopupOverlay"
+                android:id="@+id/popupOverlay"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:alpha="0"

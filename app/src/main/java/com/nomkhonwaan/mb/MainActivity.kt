@@ -1,14 +1,22 @@
 package com.nomkhonwaan.mb
 
-import android.animation.*
-import android.support.v7.app.AppCompatActivity
+import android.animation.Animator
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.View
+import android.view.ViewGroup
 import io.reactivex.Observable
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_header.*
+import kotlinx.android.synthetic.main.app_sidebar.*
 
 class MainActivity : AppCompatActivity() {
+
+    private var isCollapsed: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,39 +25,42 @@ class MainActivity : AppCompatActivity() {
         val outMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(outMetrics)
 
-        val llAppParams = llApp.layoutParams
-        val inAppSidebarParams = inAppSidebar.layoutParams
-        val clAppMainParams = clAppMain.layoutParams
+        setApplicationWidth(outMetrics)
+        setSidebarAnimation(outMetrics)
 
-        llAppParams.width = outMetrics.widthPixels + inAppSidebarParams.width
-        clAppMainParams.width = outMetrics.widthPixels
+        supportFragmentManager
+                .beginTransaction()
+                .add(appContent.id, RecentPostsFragment.newInstance())
+                .commit()
+    }
 
-        llApp.requestLayout()
-        clAppMain.requestLayout()
+    private fun setApplicationWidth(outMetrics: DisplayMetrics) {
+        val appParams: ViewGroup.LayoutParams = app.layoutParams
+        val appSidebarParams: ViewGroup.LayoutParams = appSidebar.layoutParams
+        val appMainParams: ViewGroup.LayoutParams = appMain.layoutParams
 
-        val sidebarToggleObservable: Observable<Boolean> = Observable.create { emitter ->
-            var isCollapsed = true
-            val onToggleSidebar = { _: View -> isCollapsed = !isCollapsed; emitter.onNext(isCollapsed) }
+        appParams.width = outMetrics.widthPixels + appSidebarParams.width
+        appMainParams.width = outMetrics.widthPixels
 
-            ibSidebarToggle.setOnClickListener(onToggleSidebar)
-            ibSidebarClose.setOnClickListener(onToggleSidebar)
-            vPopupOverlay.setOnClickListener(onToggleSidebar)
-        }
+        app.requestLayout()
+        appMain.requestLayout()
+    }
 
-        sidebarToggleObservable.subscribe { isCollapsed ->
+    private fun setSidebarAnimation(outMetrics: DisplayMetrics) {
+        sidebarObservable().subscribe { isCollapsed ->
             val animatorSet = AnimatorSet()
 
             if (!isCollapsed) {
-                vPopupOverlay.visibility = View.VISIBLE
+                popupOverlay.visibility = View.VISIBLE
             }
 
             animatorSet.playTogether(
-                    ObjectAnimator.ofFloat(llApp, "translationX", TypedValue.applyDimension(
+                    ObjectAnimator.ofFloat(app, "translationX", TypedValue.applyDimension(
                             TypedValue.COMPLEX_UNIT_DIP,
                             if (isCollapsed) -256f else 0f,
                             outMetrics
                     )),
-                    ObjectAnimator.ofFloat(vPopupOverlay, "alpha", if (isCollapsed) 0f else 0.16f)
+                    ObjectAnimator.ofFloat(popupOverlay, "alpha", if (isCollapsed) 0f else 0.16f)
             )
 
             animatorSet.duration = 400
@@ -59,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
                 override fun onAnimationEnd(animation: Animator?) {
                     if (isCollapsed) {
-                        vPopupOverlay.visibility = View.GONE
+                        popupOverlay.visibility = View.GONE
                     }
                 }
 
@@ -69,7 +80,18 @@ class MainActivity : AppCompatActivity() {
                 override fun onAnimationStart(animation: Animator?) {
                 }
             })
+
             animatorSet.start()
+        }
+    }
+
+    private fun sidebarObservable(): Observable<Boolean> {
+        return Observable.create { emitter ->
+            val toggleSidebar = { _: View -> isCollapsed = !isCollapsed; emitter.onNext(isCollapsed) }
+
+            popupOverlay.setOnClickListener(toggleSidebar)
+            btnSidebarOpen.setOnClickListener(toggleSidebar)
+            btnSidebarClose.setOnClickListener(toggleSidebar)
         }
     }
 

@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.nomkhonwaan.mb.SingleActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name="com.nomkhonwaan.mb.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">myblog</string>
+    <string name="app_name">mb-android</string>
     <string name="sidebar_close">CLOSE</string>
     <string name="sidebar_home">Home</string>
     <string name="sidebar_login_register">Login / Register</string>
@@ -9,4 +9,7 @@
     <string name="sidebar_devops">DevOps</string>
     <string name="sidebar_life_style">Life Style</string>
     <string name="sidebar_how_i_made_this_website">How I made this website</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

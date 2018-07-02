@@ -10,7 +10,7 @@
         android:layout_height="64dp">
 
         <ImageButton
-            android:id="@+id/ibSidebarClose"
+            android:id="@+id/btnSidebarClose"
             android:layout_width="10dp"
             android:layout_height="16dp"
             android:layout_marginEnd="32dp"
