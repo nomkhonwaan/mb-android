@@ -6,11 +6,7 @@
 
     <ImageButton
         android:id="@+id/btnSidebarOpen"
-        android:layout_width="19.25dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="32dp"
-        android:background="@drawable/fal_bars"
-        android:backgroundTint="@color/colorIcon"
+        style="@style/App.Header.BtnSidebarOpen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,9 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:background="#ececec"
+        style="@style/App.HorizontalLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

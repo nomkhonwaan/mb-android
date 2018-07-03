@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorIcon">#808080</color>
     <color name="colorPopupOverlay">#333</color>
+    <color name="colorHorizontalLine">#ECECEC</color>
+    <color name="colorText">#333</color>
 </resources>

@@ -18,7 +18,7 @@
 
         <include
             android:id="@+id/appSidebar"
-            layout="@layout/app_sidebar"
+            layout="@layout/partial_app_sidebar"
             android:layout_width="256dp"
             android:layout_height="match_parent" />
 
@@ -29,7 +29,7 @@
 
             <include
                 android:id="@+id/appHeader"
-                layout="@layout/app_header"
+                layout="@layout/partial_app_header"
                 android:layout_width="match_parent"
                 android:layout_height="64dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
 
             <include
                 android:id="@+id/appFooter"
-                layout="@layout/app_footer"
+                layout="@layout/partial_app_footer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -54,11 +54,7 @@
 
             <View
                 android:id="@+id/popupOverlay"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:alpha="0"
-                android:background="@color/colorPopupOverlay"
-                android:visibility="gone"
+                style="@style/App.PopupOverlay"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

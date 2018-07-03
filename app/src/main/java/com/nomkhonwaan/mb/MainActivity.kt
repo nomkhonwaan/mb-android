@@ -5,15 +5,15 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.util.DisplayMetrics
-import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_header.*
-import kotlinx.android.synthetic.main.app_sidebar.*
+import kotlinx.android.synthetic.main.partial_app_header.*
+import kotlinx.android.synthetic.main.partial_app_sidebar.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,11 +28,12 @@ class MainActivity : AppCompatActivity() {
 
         setAppWidth(outMetrics)
         setSidebarAnimation(outMetrics)
+        setSidebarNavItems()
 
-        supportFragmentManager
-                .beginTransaction()
-                .add(appContent.id, RecentPostsFragment.newInstance())
-                .commit()
+//        supportFragmentManager
+//                .beginTransaction()
+//                .add(appContent.id, RecentPostsFragment.newInstance())
+//                .commit()
     }
 
     private fun setAppWidth(outMetrics: DisplayMetrics) {
@@ -45,6 +46,28 @@ class MainActivity : AppCompatActivity() {
 
         app.requestLayout()
         appMain.requestLayout()
+    }
+
+    private fun setSidebarNavItems() {
+        val viewManager = LinearLayoutManager(this)
+        val viewAdapter = NavItemsViewAdapter(
+                arrayOf(
+                        NavItem("Home"),
+                        NavItem("Login / Register"),
+                        NavItem("Web Development"),
+                        NavItem("Web Design"),
+                        NavItem("Programming"),
+                        NavItem("DevOps"),
+                        NavItem("Life Style"),
+                        NavItem("How I made this website")
+                )
+        )
+
+        nav.apply {
+            setHasFixedSize(true)
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
     }
 
     private fun setSidebarAnimation(outMetrics: DisplayMetrics) {
