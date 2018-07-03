@@ -1,10 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar" />
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -13,64 +9,9 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="App" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="App.Main" />
-
-    <style name="App.Header" />
-
-    <style name="App.Header.BtnSidebarOpen">
-        <item name="android:background">@drawable/fal_bars</item>
-        <item name="android:backgroundTint">@color/colorIcon</item>
-        <item name="android:layout_height">24dp</item>
-        <item name="android:layout_marginStart">32dp</item>
-        <item name="android:layout_width">19.25dp</item>
-    </style>
-
-    <style name="App.Content" />
-
-    <style name="App.Footer" />
-
-    <style name="App.PopupOverlay">
-        <item name="android:alpha">0</item>
-        <item name="android:background">@color/colorPopupOverlay</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="android:visibility">gone</item>
-    </style>
-
-    <style name="App.Sidebar" />
-
-    <style name="App.Sidebar.Nav">
-        <item name="android:layout_marginTop">40dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:nestedScrollingEnabled">false</item>
-        <item name="android:overScrollMode">never</item>
-    </style>
-
-    <style name="App.Sidebar.NavItem">
-        <item name="android:fontFamily">@font/lato_regular</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingTop">24dp</item>
-        <item name="android:paddingBottom">24dp</item>
-        <item name="android:paddingLeft">32dp</item>
-        <item name="android:paddingRight">32dp</item>
-        <item name="android:textColor">@color/colorText</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">normal</item>
-    </style>
-
-    <style name="App.Sidebar.BtnSidebarClose">
-        <item name="android:layout_width">10dp</item>
-        <item name="android:layout_height">16dp</item>
-        <item name="android:layout_marginEnd">32dp</item>
-        <item name="android:background">@drawable/fal_times</item>
-        <item name="android:backgroundTint">@color/colorIcon</item>
-    </style>
-
-    <style name="App.HorizontalLine">
+    <style name="HorizontalLine">
         <item name="android:background">@color/colorHorizontalLine</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:layout_width">0dp</item>

@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/sidebarHeader"
+        android:id="@+id/sidebar_header"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -13,14 +13,18 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/btnSidebarClose"
-            style="@style/App.Sidebar.BtnSidebarClose"
+            android:id="@+id/button_sidebar_close"
+            android:layout_width="10dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/ic_fal_times"
+            android:backgroundTint="@color/colorIcon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
-            style="@style/App.HorizontalLine"
+            style="@style/HorizontalLine"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -29,9 +33,13 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/nav"
-        style="@style/App.Sidebar.Nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:nestedScrollingEnabled="false"
+        android:overScrollMode="never"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sidebarHeader" />
+        app:layout_constraintTop_toBottomOf="@id/sidebar_header" />
 
 </android.support.constraint.ConstraintLayout>
