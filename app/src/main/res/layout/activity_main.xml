@@ -6,66 +6,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/app"
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:translationX="-256dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
-        <include
-            android:id="@+id/sidebar"
-            layout="@layout/partial_app_sidebar"
-            android:layout_width="256dp"
-            android:layout_height="match_parent" />
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/main"
-            android:layout_width="0dp"
-            android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/app"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:translationX="-256dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <include
-                android:id="@+id/header"
-                layout="@layout/partial_app_header"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:id="@+id/sidebar"
+                layout="@layout/partial_app_sidebar"
+                android:layout_width="256dp"
+                android:layout_height="match_parent" />
 
-            <FrameLayout
-                android:id="@+id/content"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/header" />
-
-            <include
-                android:id="@+id/footer"
-                layout="@layout/partial_app_footer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/content" />
-
-            <View
-                android:id="@+id/popup_overlay"
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/main"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:alpha="0"
-                android:background="@color/colorPopupOverlay"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="match_parent">
 
-        </android.support.constraint.ConstraintLayout>
+                <include
+                    android:id="@+id/header"
+                    layout="@layout/partial_app_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-    </LinearLayout>
+                <FrameLayout
+                    android:id="@+id/content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/header" />
+
+                <include
+                    android:id="@+id/footer"
+                    layout="@layout/partial_app_footer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/content" />
+
+                <View
+                    android:id="@+id/popup_overlay"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:alpha="0"
+                    android:background="@color/colorPopupOverlay"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
