@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         // Add list of nav-items to the sidebar navigation (RecyclerView)
         addSidebarNavItems()
 
-        // Default render a recent-posts page
+        // Render recent posts page as default
         renderRecentPosts()
     }
 
@@ -88,21 +88,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addSidebarNavItems() {
-        val viewManager = LinearLayoutManager(this)
-        val viewAdapter = NavItemsViewAdapter(arrayOf(
-                NavItem(resources.getString(R.string.sidebar_home)),
-                NavItem(resources.getString(R.string.sidebar_login_register)),
-                NavItem(resources.getString(R.string.sidebar_web_development)),
-                NavItem(resources.getString(R.string.sidebar_web_design)),
-                NavItem(resources.getString(R.string.sidebar_programming)),
-                NavItem(resources.getString(R.string.sidebar_devops)),
-                NavItem(resources.getString(R.string.sidebar_life_style)),
-                NavItem(resources.getString(R.string.sidebar_how_i_made_this_website))
-        ))
-
         nav.apply {
-            layoutManager = viewManager
-            adapter = viewAdapter
+            layoutManager = LinearLayoutManager(context)
+            adapter = NavItemsViewAdapter(arrayOf(
+                    NavItem(resources.getString(R.string.sidebar_home)),
+                    NavItem(resources.getString(R.string.sidebar_login_register)),
+                    NavItem(resources.getString(R.string.sidebar_web_development)),
+                    NavItem(resources.getString(R.string.sidebar_web_design)),
+                    NavItem(resources.getString(R.string.sidebar_programming)),
+                    NavItem(resources.getString(R.string.sidebar_devops)),
+                    NavItem(resources.getString(R.string.sidebar_life_style)),
+                    NavItem(resources.getString(R.string.sidebar_how_i_made_this_website))
+            ))
         }
     }
 

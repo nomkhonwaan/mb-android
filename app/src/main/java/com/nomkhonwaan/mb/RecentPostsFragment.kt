@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.nomkhonwaan.mb.services.BloggingService
+import io.reactivex.Scheduler
+import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 
@@ -31,26 +33,15 @@ class RecentPostsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val retrofit = Retrofit.Builder()
-                .baseUrl("https://jsonplaceholder.typicode.com/")
-                .addConverterFactory(JacksonConverterFactory.create())
-                .build()
-        val service = retrofit.create(BloggingService::class.java)
-        val posts = service.latestPublishedPosts().execute().body()
-        Log.d("recent-posts", posts?.get(0)?.title)
-//        val service = retrofit.create(BloggingService::class.java)
-//        val repo = service.latestPublishedPosts()
-//        val posts = repo.execute()
-//
-//        Log.d("recent-posts", posts.body()?.get(0).toString())
-    }
+        val service = BloggingService.newInstance()
 
-    private fun renderLatestPublishedPosts() {
-
-    }
-
-    private fun renderLatestUpdatedCategories() {
-
+        service.latestPublishedPosts()
+                .subscribeOn(Schedulers.io())
+                .subscribe {
+                    it.map {
+                        Log.d("recent-posts", it?.userId.toString())
+                    }
+                }
     }
 
 }
