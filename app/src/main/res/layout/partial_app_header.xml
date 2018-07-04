@@ -8,6 +8,7 @@
         android:id="@+id/button_sidebar_open"
         android:layout_width="19.25dp"
         android:layout_height="24dp"
+        android:paddingLeft="32dp"
         android:layout_marginStart="32dp"
         android:background="@drawable/ic_fal_bars"
         android:backgroundTint="@color/colorIcon"

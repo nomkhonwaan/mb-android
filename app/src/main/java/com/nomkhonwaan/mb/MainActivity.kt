@@ -82,6 +82,7 @@ class MainActivity : AppCompatActivity() {
 
             popup_overlay.setOnClickListener(toggleSidebar)
             button_sidebar_open.setOnClickListener(toggleSidebar)
+            text_sidebar_close.setOnClickListener(toggleSidebar)
             button_sidebar_close.setOnClickListener(toggleSidebar)
         }
     }

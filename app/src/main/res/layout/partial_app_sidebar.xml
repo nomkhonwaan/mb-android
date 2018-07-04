@@ -13,12 +13,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/text_sidebar_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/lato_regular"
             android:text="@string/sidebar_close"
             android:textColor="@color/colorIcon"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/button_sidebar_close"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/button_sidebar_close"
