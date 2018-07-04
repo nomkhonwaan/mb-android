@@ -112,4 +112,5 @@ class MainActivity : AppCompatActivity() {
                 .add(content.id, RecentPostsFragment.newInstance())
                 .commit()
     }
+
 }
