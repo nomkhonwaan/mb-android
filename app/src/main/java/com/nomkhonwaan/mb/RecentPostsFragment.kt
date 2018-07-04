@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.nomkhonwaan.mb.services.BloggingService
 import retrofit2.Retrofit
+import retrofit2.converter.jackson.JacksonConverterFactory
 
 class RecentPostsFragment : Fragment() {
 
@@ -32,9 +33,11 @@ class RecentPostsFragment : Fragment() {
 
         val retrofit = Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")
+                .addConverterFactory(JacksonConverterFactory.create())
                 .build()
         val service = retrofit.create(BloggingService::class.java)
-        service.latestPublishedPosts()
+        val posts = service.latestPublishedPosts().execute().body()
+        Log.d("recent-posts", posts?.get(0)?.title)
 //        val service = retrofit.create(BloggingService::class.java)
 //        val repo = service.latestPublishedPosts()
 //        val posts = repo.execute()
