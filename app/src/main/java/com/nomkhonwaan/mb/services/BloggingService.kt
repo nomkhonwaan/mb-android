@@ -1,6 +1,6 @@
 package com.nomkhonwaan.mb.services
 
-import com.nomkhonwaan.mb.models.Post
+import com.nomkhonwaan.mb.models.LatestPublishedPosts
 import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -16,7 +16,7 @@ interface BloggingService {
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(JacksonConverterFactory.create())
-                    .baseUrl("https://jsonplaceholder.typicode.com/")
+                    .baseUrl("https://api.nomkhonwaan.com/")
                     .build()
 
             return retrofit.create(BloggingService::class.java)
@@ -24,11 +24,11 @@ interface BloggingService {
 
     }
 
-    @GET("/posts")
+    @GET("/v1/latest-published-posts")
     fun latestPublishedPosts(
             @Query("page[offset]") offset: Int? = 0,
             @Query("page[limit]") limit: Int? = 5,
             @Query("include") include: String? = "authors,categories,tags"
-    ): Observable<List<Post?>>
+    ): Observable<LatestPublishedPosts>
 
 }

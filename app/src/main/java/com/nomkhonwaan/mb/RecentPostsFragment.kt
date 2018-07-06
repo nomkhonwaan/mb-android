@@ -38,9 +38,7 @@ class RecentPostsFragment : Fragment() {
         service.latestPublishedPosts()
                 .subscribeOn(Schedulers.io())
                 .subscribe {
-                    it.map {
-                        Log.d("recent-posts", it?.userId.toString())
-                    }
+                    Log.d("recent-posts", it.links.self)
                 }
     }
 
