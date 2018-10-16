@@ -12,12 +12,14 @@ import android.view.View
 import com.nomkhonwaan.mb.R.layout.activity_main
 import com.nomkhonwaan.mb.models.NavItem
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.partial_app_header.*
 import kotlinx.android.synthetic.main.partial_app_sidebar.*
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -71,31 +73,33 @@ class MainActivity : AppCompatActivity() {
         }
 
         // This animation will translate-x (move from left-to-right) when the sidebar has been toggled
-        val disposable: Disposable = observable.subscribe { isCollapsed ->
-            val animatorSet = AnimatorSet()
+        val disposable: Disposable = observable
+                .debounce(400, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
+                .subscribe { isCollapsed ->
+                    val animatorSet = AnimatorSet()
 
-            if (!isCollapsed) {
-                popup_overlay.visibility = View.VISIBLE
-            }
-
-            animatorSet.playTogether(
-                    ObjectAnimator.ofFloat(app, "translationX",
-                            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, if (isCollapsed) -256f else 0f, displayMetrics)),
-                    ObjectAnimator.ofFloat(popup_overlay, "alpha", if (isCollapsed) 0f else 0.16f)
-            )
-            animatorSet.duration = 400
-            animatorSet.addListener(object : Animator.AnimatorListener {
-                override fun onAnimationCancel(animation: Animator?) {}
-                override fun onAnimationRepeat(animation: Animator?) {}
-                override fun onAnimationStart(animation: Animator?) {}
-                override fun onAnimationEnd(animation: Animator?) {
-                    if (isCollapsed) {
-                        popup_overlay.visibility = View.GONE
+                    if (!isCollapsed) {
+                        popup_overlay.visibility = View.VISIBLE
                     }
+
+                    animatorSet.playTogether(
+                            ObjectAnimator.ofFloat(app, "translationX",
+                                    TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, if (isCollapsed) -256f else 0f, displayMetrics)),
+                            ObjectAnimator.ofFloat(popup_overlay, "alpha", if (isCollapsed) 0f else 0.16f)
+                    )
+                    animatorSet.duration = 400
+                    animatorSet.addListener(object : Animator.AnimatorListener {
+                        override fun onAnimationCancel(animation: Animator?) {}
+                        override fun onAnimationRepeat(animation: Animator?) {}
+                        override fun onAnimationStart(animation: Animator?) {}
+                        override fun onAnimationEnd(animation: Animator?) {
+                            if (isCollapsed) {
+                                popup_overlay.visibility = View.GONE
+                            }
+                        }
+                    })
+                    animatorSet.start()
                 }
-            })
-            animatorSet.start()
-        }
 
         disposable.addTo(compositeDisposable)
     }

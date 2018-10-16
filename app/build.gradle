@@ -10,6 +10,7 @@ buildscript {
         androidTestEspressoVersion = '3.0.2'
         junitVersion = '5.2.0'
         retrofitVersion = '2.4.0'
+        rxAndroidVersion = '2.1.0'
         rxKotlinVersion = '2.3.0'
         testRunnerVersion = '1.0.2'
     }
@@ -45,6 +46,7 @@ dependencies {
     implementation("com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}")
     implementation("com.squareup.retrofit2:converter-jackson:${retrofitVersion}")
     implementation("com.squareup.retrofit2:retrofit:${retrofitVersion}")
+    implementation("io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}")
     implementation("io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
