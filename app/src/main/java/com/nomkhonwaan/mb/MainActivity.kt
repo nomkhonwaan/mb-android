@@ -60,9 +60,9 @@ class MainActivity : AppCompatActivity() {
      */
     private fun createToggleSidebarAnimation(displayMetrics: DisplayMetrics) {
         // Create an observable object that listen to all related views that can toggle sidebar animation
-        val observable: Observable<Boolean> = Observable.create {
+        val observable: Observable<Boolean> = Observable.create { emitter ->
             var isCollapsed = true
-            val toggleSidebar = { _: View -> isCollapsed = !isCollapsed; it.onNext(isCollapsed) }
+            val toggleSidebar = { _: View -> isCollapsed = !isCollapsed; emitter.onNext(isCollapsed) }
 
             popup_overlay.setOnClickListener(toggleSidebar)
             button_sidebar_open.setOnClickListener(toggleSidebar)
@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
     private fun addSidebarNavItems() {
         nav.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = NavItemsViewAdapter(arrayOf(
+            adapter = NavItemsAdapter(arrayOf(
                     NavItem(resources.getString(R.string.sidebar_home)),
                     NavItem(resources.getString(R.string.sidebar_login_register)),
                     NavItem(resources.getString(R.string.sidebar_web_development)),
