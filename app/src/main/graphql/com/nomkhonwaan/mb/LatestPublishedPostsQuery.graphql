@@ -1,0 +1,25 @@
+query LatestPublishedPostsQuery {
+    latestPublishedPosts {
+        id
+        title
+        slug
+        publishedAt
+        status
+        html
+        markdown
+        author {
+            id
+            avatarUrl
+            displayName
+            emails {
+                email
+                isPrimary
+            }
+            createdAt
+            updatedAt
+        }
+        categories
+        createdAt
+        updatedAt
+    }
+}
