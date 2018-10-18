@@ -8,18 +8,30 @@ query LatestPublishedPostsQuery {
         html
         markdown
         author {
-            id
-            avatarUrl
-            displayName
-            emails {
-                email
-                isPrimary
-            }
-            createdAt
-            updatedAt
+            ...UserFragment
         }
-        categories
+        categories {
+            ...CategoryFragment
+        }
         createdAt
         updatedAt
     }
+}
+
+fragment CategoryFragment on Category {
+    id
+    name
+    slug
+}
+
+fragment UserFragment on User {
+    id
+    avatarUrl
+    displayName
+    emails {
+        email
+        isPrimary
+    }
+    createdAt
+    updatedAt
 }
