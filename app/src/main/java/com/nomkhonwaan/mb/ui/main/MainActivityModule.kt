@@ -1,4 +1,4 @@
-package com.nomkhonwaan.mb
+package com.nomkhonwaan.mb.ui.main
 
 import dagger.Module
 

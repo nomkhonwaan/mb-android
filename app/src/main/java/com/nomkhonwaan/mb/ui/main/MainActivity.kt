@@ -1,21 +1,25 @@
-package com.nomkhonwaan.mb
+package com.nomkhonwaan.mb.ui.main
 
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.app.Activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.DisplayMetrics
+import android.util.Log
 import android.util.TypedValue
 import android.view.View
+import com.apollographql.apollo.ApolloCall
+import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.api.Response
+import com.apollographql.apollo.api.cache.http.HttpCachePolicy
+import com.apollographql.apollo.exception.ApolloException
+import com.nomkhonwaan.mb.LatestPublishedPostsQuery
+import com.nomkhonwaan.mb.R
 import com.nomkhonwaan.mb.R.layout.activity_main
 import com.nomkhonwaan.mb.models.NavItem
 import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasActivityInjector
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -28,6 +32,9 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var apolloClient: ApolloClient
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -55,6 +62,7 @@ class MainActivity : AppCompatActivity() {
 
 //        // Render recent posts page as default
 //        renderRecentPosts()
+
     }
 
     override fun onDestroy() {

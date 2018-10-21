@@ -1,4 +1,4 @@
-package com.nomkhonwaan.mb
+package com.nomkhonwaan.mb.ui.recentposts
 
 import android.support.v4.app.Fragment
 
