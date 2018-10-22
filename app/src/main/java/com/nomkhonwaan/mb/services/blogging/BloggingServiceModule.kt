@@ -1,6 +1,7 @@
 package com.nomkhonwaan.mb.services.blogging
 
 import com.apollographql.apollo.ApolloClient
+import com.apollographql.apollo.cache.normalized.NormalizedCacheFactory
 import dagger.Module
 import dagger.Provides
 
