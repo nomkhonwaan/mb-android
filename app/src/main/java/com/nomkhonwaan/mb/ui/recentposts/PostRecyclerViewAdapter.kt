@@ -1,4 +1,4 @@
-package com.nomkhonwaan.mb
+package com.nomkhonwaan.mb.ui.recentposts
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the

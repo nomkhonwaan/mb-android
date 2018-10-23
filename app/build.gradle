@@ -37,13 +37,15 @@ android {
             buildConfigField(String.typeName, 'GRAPHQL_ENDPOINT', '"https://api-dev.nomkhonwaan.com/graphql"')
         }
         staging {
-            minifyEnabled(true)
             buildConfigField(String.typeName, 'GRAPHQL_ENDPOINT', '"https://api-staging.nomkhonwaan.com/graphql"')
+
+            minifyEnabled(true)
         }
         release {
+            buildConfigField(String.typeName, 'GRAPHQL_ENDPOINT', '"https://api.nomkhonwaan.com/graphql"')
+            
             minifyEnabled(true)
             proguardFiles(getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro')
-            buildConfigField(String.typeName, 'GRAPHQL_ENDPOINT', '"https://api.nomkhonwaan.com/graphql"')
         }
     }
 }

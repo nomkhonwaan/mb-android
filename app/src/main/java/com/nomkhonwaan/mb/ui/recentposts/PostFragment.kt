@@ -1,4 +1,4 @@
-package com.nomkhonwaan.mb
+package com.nomkhonwaan.mb.ui.recentposts
 
 ///**
 // * A fragment representing a list of Items.
