@@ -23,19 +23,27 @@ buildscript {
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion(28)
     defaultConfig {
-        applicationId "com.nomkhonwaan.mb"
-        minSdkVersion 24
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        applicationId('com.nomkhonwaan.mb')
+        minSdkVersion(24)
+        targetSdkVersion(28)
+        versionCode(1)
+        versionName('1.0')
+        testInstrumentationRunner('android.support.test.runner.AndroidJUnitRunner')
     }
     buildTypes {
+        debug {
+            buildConfigField(String.typeName, 'GRAPHQL_ENDPOINT', '"https://api-dev.nomkhonwaan.com/graphql"')
+        }
+        staging {
+            minifyEnabled(true)
+            buildConfigField(String.typeName, 'GRAPHQL_ENDPOINT', '"https://api-staging.nomkhonwaan.com/graphql"')
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled(true)
+            proguardFiles(getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro')
+            buildConfigField(String.typeName, 'GRAPHQL_ENDPOINT', '"https://api.nomkhonwaan.com/graphql"')
         }
     }
 }

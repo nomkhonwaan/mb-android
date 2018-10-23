@@ -1,7 +1,7 @@
 package com.nomkhonwaan.mb.services.blogging
 
 import com.apollographql.apollo.ApolloClient
-import com.apollographql.apollo.cache.normalized.NormalizedCacheFactory
+import com.nomkhonwaan.mb.BuildConfig
 import dagger.Module
 import dagger.Provides
 
@@ -11,8 +11,7 @@ class BloggingServiceModule {
     @Provides
     fun provideApolloClient(): ApolloClient {
         return ApolloClient.builder()
-                // TODO: Find the proper to config a GraphQL endpoint instead of hard-coding
-                .serverUrl("https://api.nomkhonwaan.com/graphql")
+                .serverUrl(BuildConfig.GRAPHQL_ENDPOINT)
                 .build()
     }
 
