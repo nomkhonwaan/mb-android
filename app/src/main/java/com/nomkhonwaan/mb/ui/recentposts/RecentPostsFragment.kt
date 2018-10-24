@@ -30,10 +30,6 @@ class RecentPostsFragment : Fragment() {
         return inflater.inflate(fragment_recent_posts, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
     override fun onAttach(context: Context?) {
         AndroidSupportInjection.inject(this)
 

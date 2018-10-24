@@ -12,7 +12,7 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
-class MbAndroidApplication : Application(), HasActivityInjector {
+class MbApplication : Application(), HasActivityInjector {
 
     @Inject
     lateinit var activityInjector: DispatchingAndroidInjector<Activity>
@@ -32,7 +32,7 @@ class MbAndroidApplication : Application(), HasActivityInjector {
         }
 
         // Create & initialize Dagger2 component
-        DaggerMbAndroidApplicationComponent.create()
+        DaggerMbApplicationComponent.create()
                 .inject(this)
     }
 
