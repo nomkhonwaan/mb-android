@@ -7,10 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.nomkhonwaan.mb.R.layout.fragment_recent_posts
-import dagger.android.AndroidInjection
+import com.nomkhonwaan.mb.services.blogging.BloggingService
 import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
 class RecentPostsFragment : Fragment() {
+
+    @Inject
+    lateinit var bloggingService: BloggingService
 
     companion object {
 
@@ -25,9 +29,14 @@ class RecentPostsFragment : Fragment() {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(fragment_recent_posts, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+//        bloggingService.findAllPublishedPosts()
     }
 
     override fun onAttach(context: Context?) {

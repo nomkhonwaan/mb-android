@@ -1,4 +1,4 @@
-package com.nomkhonwaan.mb.models
+package com.nomkhonwaan.mb.ui.main
 
 data class NavItem(
         val name: String

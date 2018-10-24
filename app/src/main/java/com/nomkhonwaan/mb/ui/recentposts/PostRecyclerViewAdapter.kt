@@ -23,7 +23,7 @@ package com.nomkhonwaan.mb.ui.recentposts
 //
 //    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 //        val view = LayoutInflater.from(parent.context)
-//                .inflate(R.layout.fragment_post, parent, false)
+//                .inflate(R.layout.item_medium_post, parent, false)
 //        return ViewHolder(view)
 //    }
 //

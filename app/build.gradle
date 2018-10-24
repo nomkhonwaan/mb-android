@@ -43,7 +43,7 @@ android {
         }
         release {
             buildConfigField(String.typeName, 'GRAPHQL_ENDPOINT', '"https://api.nomkhonwaan.com/graphql"')
-            
+
             minifyEnabled(true)
             proguardFiles(getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro')
         }
@@ -58,6 +58,7 @@ dependencies {
     implementation("com.android.support:design:${androidSupportVersion}")
     implementation("com.android.support:recyclerview-v7:${androidSupportVersion}")
     implementation("com.apollographql.apollo:apollo-runtime:${apolloVersion}")
+    implementation('com.apollographql.apollo:apollo-rx2-support:0.4.0')
     implementation("com.android.support:support-v4:${androidSupportVersion}")
     implementation("com.google.dagger:dagger:${daggerVersion}")
     implementation("com.google.dagger:dagger-android-support:${daggerVersion}")

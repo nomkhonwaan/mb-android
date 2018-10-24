@@ -12,20 +12,18 @@ import android.util.TypedValue
 import android.view.View
 import com.nomkhonwaan.mb.R
 import com.nomkhonwaan.mb.R.layout.activity_main
-import com.nomkhonwaan.mb.models.NavItem
+import com.nomkhonwaan.mb.ui.recentposts.RecentPostsFragment
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.partial_app_header.*
 import kotlinx.android.synthetic.main.partial_app_sidebar.*
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
@@ -57,8 +55,10 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         // Add list of nav items to the sidebar
         addSidebarNavItems()
 
-//        // Render recent posts page as default
-//        renderRecentPosts()
+        // Default, will render the recent posts page
+        if (savedInstanceState == null) {
+            renderRecentPosts()
+        }
 
     }
 
@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         // This animation will translate-x (move from left-to-right) when the sidebar has been toggled
         val disposable: Disposable = observable
-                .debounce(400, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
+//                .debounce(400, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
                 .subscribe { isCollapsed ->
                     val animatorSet = AnimatorSet()
 
@@ -140,11 +140,14 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         }
     }
 
-//    private fun renderRecentPosts() {
-//        supportFragmentManager
-//                .beginTransaction()
-//                .add(content.id, RecentPostsFragment.newInstance())
-//                .commit()
-//    }
+    /**
+     * Render the recent posts page which will show a list of latest published posts.
+     */
+    private fun renderRecentPosts() {
+        supportFragmentManager
+                .beginTransaction()
+                .add(content.id, RecentPostsFragment.newInstance())
+                .commit()
+    }
 
 }
