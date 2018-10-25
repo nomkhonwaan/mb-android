@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         createToggleSidebarAnimation(displayMetrics)
 
         // Add list of nav items to the sidebar
-        addSidebarNavItems()
+        renderSidebarNavigator()
 
         // Default, will render the recent posts page
         if (savedInstanceState == null) {
@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     /**
      * Apply all sidebar's navigator items to the RecyclerView.
      */
-    private fun addSidebarNavItems() {
+    private fun renderSidebarNavigator() {
         nav.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = NavItemsAdapter(arrayOf(

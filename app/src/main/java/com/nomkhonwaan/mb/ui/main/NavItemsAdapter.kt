@@ -9,7 +9,7 @@ import com.nomkhonwaan.mb.R.layout.item_nav
 class NavItemsAdapter(private val dataSet: Array<NavItem>) : RecyclerView.Adapter<NavItemsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NavItemsViewHolder {
-        val textView = LayoutInflater.from(parent.context)
+        val textView: TextView = LayoutInflater.from(parent.context)
                 .inflate(item_nav, parent, false) as TextView
 
         return NavItemsViewHolder(textView)
