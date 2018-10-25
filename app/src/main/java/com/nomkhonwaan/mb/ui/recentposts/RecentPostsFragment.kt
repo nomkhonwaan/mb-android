@@ -65,7 +65,7 @@ class RecentPostsFragment : Fragment() {
     }
 
     /**
-     * Render the latest published posts by retrieving from GraphQL server.
+     * Render a list of published posts ordered by "publishedAt" property at recent posts section.
      */
     private fun renderLatestPublishedPosts() {
         val disposable: Disposable = bloggingService.findAllPublishedPosts().subscribe { response: Response<LatestPublishedPostsQuery.Data> ->

@@ -16,8 +16,7 @@ class PostAdapter(private val dataSet: Array<Post>) : RecyclerView.Adapter<PostV
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-//    holder.constraintLayout.find
-//        holder.
+        holder.postTitle.text = dataSet[position].title
     }
 
     override fun getItemCount(): Int {

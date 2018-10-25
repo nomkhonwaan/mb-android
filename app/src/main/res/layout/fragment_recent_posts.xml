@@ -9,8 +9,13 @@
         android:id="@+id/text_latest_published_posts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/lato_regular"
         android:text="@string/recentposts_latest_published_posts"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textAllCaps="true"
+        android:textColor="@color/colorSectionTitle"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
