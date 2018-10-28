@@ -3,10 +3,10 @@ package com.nomkhonwaan.mb.ui.recentposts
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.apollographql.apollo.api.Response
 import com.nomkhonwaan.mb.LatestPublishedPostsQuery
 import com.nomkhonwaan.mb.R.layout.fragment_recent_posts
@@ -17,7 +17,6 @@ import dagger.android.support.AndroidSupportInjection
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_recent_posts.*
 import javax.inject.Inject
 
@@ -48,6 +47,9 @@ class RecentPostsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Set section title's border bottom width programmatically
+        setSectionTitleBorderBottomWidth(text_recent_posts, view_recent_posts_border_bottom)
+
         // Render the latest list of published posts
         renderLatestPublishedPosts()
     }
@@ -65,6 +67,17 @@ class RecentPostsFragment : Fragment() {
     }
 
     /**
+     * Set border bottom width to 80% of its section title
+     *
+     * @param {TextView} sectionTitle
+     * @param {View}     border
+     */
+    private fun setSectionTitleBorderBottomWidth(sectionTitle: TextView, border: View) {
+        sectionTitle.measure(0, 0)
+        border.layoutParams.width = sectionTitle.measuredWidth * 80 / 100
+    }
+
+    /**
      * Render a list of published posts ordered by "publishedAt" property at recent posts section.
      */
     private fun renderLatestPublishedPosts() {
@@ -76,7 +89,7 @@ class RecentPostsFragment : Fragment() {
 
                 childFragmentManager
                         .beginTransaction()
-                        .add(latest_published_posts.id, ListOfPostsFragment.newInstance(posts.toTypedArray()))
+                        .add(latest_published_posts.id, ListOfPostsFragment.newInstance(posts.slice(0..4).toTypedArray()))
                         .commit()
             }
         }

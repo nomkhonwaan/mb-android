@@ -59,7 +59,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         if (savedInstanceState == null) {
             renderRecentPosts()
         }
-
     }
 
     override fun onDestroy() {
