@@ -18,12 +18,14 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.partial_app_header.*
 import kotlinx.android.synthetic.main.partial_app_sidebar.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
@@ -77,7 +79,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
      * @param {DisplayMetrics} displayMetrics
      */
     private fun createToggleSidebarAnimation(displayMetrics: DisplayMetrics) {
-        // Create an observable object that listen to all related views that can toggle sidebar animation
         val observable: Observable<Boolean> = Observable.create { emitter ->
             var isCollapsed = true
             val toggleSidebar = { _: View -> isCollapsed = !isCollapsed; emitter.onNext(isCollapsed) }
@@ -85,12 +86,10 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
             popup_overlay.setOnClickListener(toggleSidebar)
             button_sidebar_open.setOnClickListener(toggleSidebar)
             button_sidebar_close.setOnClickListener(toggleSidebar)
-            text_sidebar_close.setOnClickListener(toggleSidebar)
         }
 
-        // This animation will translate-x (move from left-to-right) when the sidebar has been toggled
         val disposable: Disposable = observable
-//                .debounce(400, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
+                .debounce(400, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
                 .subscribe { isCollapsed ->
                     val animatorSet = AnimatorSet()
 
