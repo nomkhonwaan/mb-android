@@ -20,10 +20,4 @@
     <style name="SectionTitleBorderBottom" parent="HorizontalLine">
         <item name="android:background">@color/colorSectionTitleBorderBottom</item>
     </style>
-
-    <style name="PostTitle">
-        <item name="android:fontFamily">@font/athiti_medium</item>
-        <item name="android:textColor">@color/colorText</item>
-        <item name="android:textSize">26sp</item>
-    </style>
 </resources>
