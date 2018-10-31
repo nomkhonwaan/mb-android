@@ -4,5 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorIcon">#808080</color>
-    <color name="colorPopupOverlay">#333</color>
+    <color name="colorPopupOverlay">#333333</color>
+    <color name="colorHorizontalLine">#ECECEC</color>
+    <color name="colorSectionTitle">#4D4D4D</color>
+    <color name="colorSectionTitleBorderBottom">#808080</color>
+    <color name="colorText">#333333</color>
 </resources>
