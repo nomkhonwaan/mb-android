@@ -4,12 +4,12 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.nomkhonwaan.mb.R
 import com.nomkhonwaan.mb.R.layout.activity_main
 import com.nomkhonwaan.mb.ui.recentposts.RecentPostsFragment

@@ -1,9 +1,9 @@
 package com.nomkhonwaan.mb.ui.post
 
-import android.support.constraint.ConstraintLayout
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.RecyclerView
 import com.nomkhonwaan.mb.R.layout.post
 
 class PostAdapter(private val dataSet: Array<Post>) : RecyclerView.Adapter<PostViewHolder>() {

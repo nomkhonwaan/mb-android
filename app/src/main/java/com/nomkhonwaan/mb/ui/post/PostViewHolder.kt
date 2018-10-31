@@ -1,8 +1,8 @@
 package com.nomkhonwaan.mb.ui.post
 
-import android.support.constraint.ConstraintLayout
-import android.support.v7.widget.RecyclerView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.recyclerview.widget.RecyclerView
 import com.nomkhonwaan.mb.R.id.post_title
 
 class PostViewHolder(constraintLayout: ConstraintLayout) : RecyclerView.ViewHolder(constraintLayout) {

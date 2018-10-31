@@ -2,11 +2,11 @@ package com.nomkhonwaan.mb.ui.recentposts
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.apollographql.apollo.api.Response
 import com.nomkhonwaan.mb.LatestPublishedPostsQuery
 import com.nomkhonwaan.mb.R.layout.fragment_recent_posts
