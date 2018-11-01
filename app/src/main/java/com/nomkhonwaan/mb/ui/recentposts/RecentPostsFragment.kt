@@ -50,6 +50,10 @@ class RecentPostsFragment : Fragment() {
         // Set section title's border bottom width programmatically
         setSectionTitleBorderBottomWidth(text_recent_posts, view_recent_posts_border_bottom)
 
+//        text_recent_posts.visibility = View.GONE
+//        view_recent_posts_border_bottom.visibility = View.GONE
+//        latest_published_posts.visibility = View.GONE
+
         // Render the latest list of published posts
         renderLatestPublishedPosts()
     }
