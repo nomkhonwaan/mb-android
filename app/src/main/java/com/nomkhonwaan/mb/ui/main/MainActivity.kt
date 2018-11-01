@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nomkhonwaan.mb.R
 import com.nomkhonwaan.mb.R.layout.activity_main
-import com.nomkhonwaan.mb.ui.recentposts.RecentPostsFragment
+import com.nomkhonwaan.mb.ui.recentupdates.RecentUpdatesFragment
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         // Default, will render the recent posts page
         if (savedInstanceState == null) {
-            renderRecentPosts()
+//            renderRecentUpdates()
         }
     }
 
@@ -141,10 +141,10 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     /**
      * Render the recent posts page which will show a list of latest published posts.
      */
-    private fun renderRecentPosts() {
+    private fun renderRecentUpdates() {
         supportFragmentManager
                 .beginTransaction()
-                .add(content.id, RecentPostsFragment.newInstance())
+                .add(content.id, RecentUpdatesFragment.newInstance())
                 .commit()
     }
 
