@@ -15,6 +15,7 @@ import com.nomkhonwaan.mb.services.blogging.BloggingService
 import com.nomkhonwaan.mb.ui.post.ListOfPostsFragment
 import com.nomkhonwaan.mb.ui.post.Post
 import dagger.android.support.AndroidSupportInjection
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
@@ -91,18 +92,27 @@ class RecentUpdatesFragment : Fragment() {
      * Render a list of published posts ordered by "publishedAt" property at recent posts section.
      */
     private fun renderLatestPublishedPosts() {
-        val disposable: Disposable = bloggingService.findAllPublishedPosts().subscribe { response: Response<LatestPublishedPostsQuery.Data> ->
-            response.data()?.also { data: LatestPublishedPostsQuery.Data ->
-                val posts: List<Post> = data.latestPublishedPosts().map {
-                    Post(title = it.title())
-                }
+        val disposable: Disposable = bloggingService
+                .findAllPublishedPosts()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { response: Response<LatestPublishedPostsQuery.Data> ->
+                    response.data()?.also { data: LatestPublishedPostsQuery.Data ->
+                        val posts: List<Post> = data.latestPublishedPosts().map {
+                            Post(title = it.title())
+                        }
 
-                childFragmentManager
-                        .beginTransaction()
-                        .add(latest_published_posts.id, ListOfPostsFragment.newInstance(posts.slice(0..4).toTypedArray()))
-                        .commit()
-            }
-        }
+                        // Hide loading animation
+                        anim_view_recent_updates_loading.visibility = View.GONE
+
+                        // Display recent updates content
+                        scroll_view_recent_updates_content.visibility = View.VISIBLE
+
+                        childFragmentManager
+                                .beginTransaction()
+                                .add(latest_published_posts.id, ListOfPostsFragment.newInstance(posts.slice(0..4).toTypedArray()))
+                                .commit()
+                    }
+                }
 
         disposable.addTo(compositeDisposable)
     }
