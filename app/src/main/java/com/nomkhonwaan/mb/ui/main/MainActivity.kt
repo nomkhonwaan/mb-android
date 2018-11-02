@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         // Default, will render the recent posts page
         if (savedInstanceState == null) {
-//            renderRecentUpdates()
+            renderRecentUpdates()
         }
     }
 
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         }
 
         val disposable: Disposable = observable
-                .debounce(400, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
+                .debounce(200, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
                 .subscribe { isCollapsed ->
                     val animatorSet = AnimatorSet()
 
