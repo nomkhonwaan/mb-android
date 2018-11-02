@@ -101,16 +101,16 @@ class RecentUpdatesFragment : Fragment() {
                             Post(title = it.title())
                         }
 
-                        // Hide loading animation
-                        anim_view_recent_updates_loading.visibility = View.GONE
-
-                        // Display recent updates content
-                        scroll_view_recent_updates_content.visibility = View.VISIBLE
-
                         childFragmentManager
                                 .beginTransaction()
                                 .add(latest_published_posts.id, ListOfPostsFragment.newInstance(posts.slice(0..4).toTypedArray()))
                                 .commit()
+
+                        // Hide loading animation
+                        anim_view_recent_updates_loading.visibility = View.GONE
+
+                        // Fade-in recent updates content after content has been loaded
+                        scroll_view_recent_updates_content.animate().alpha(1.0f).duration = 400
                     }
                 }
 
