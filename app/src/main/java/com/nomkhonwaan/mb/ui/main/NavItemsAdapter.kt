@@ -1,9 +1,9 @@
 package com.nomkhonwaan.mb.ui.main
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.nomkhonwaan.mb.R.layout.item_nav
 
 class NavItemsAdapter(private val dataSet: Array<NavItem>) : RecyclerView.Adapter<NavItemsViewHolder>() {

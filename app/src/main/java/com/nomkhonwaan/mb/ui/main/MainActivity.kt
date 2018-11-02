@@ -4,15 +4,15 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
 import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.nomkhonwaan.mb.R
 import com.nomkhonwaan.mb.R.layout.activity_main
-import com.nomkhonwaan.mb.ui.recentposts.RecentPostsFragment
+import com.nomkhonwaan.mb.ui.recentupdates.RecentUpdatesFragment
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         // Default, will render the recent posts page
         if (savedInstanceState == null) {
-            renderRecentPosts()
+            renderRecentUpdates()
         }
     }
 
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         }
 
         val disposable: Disposable = observable
-                .debounce(400, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
+                .debounce(200, TimeUnit.MILLISECONDS, AndroidSchedulers.mainThread())
                 .subscribe { isCollapsed ->
                     val animatorSet = AnimatorSet()
 
@@ -141,10 +141,10 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     /**
      * Render the recent posts page which will show a list of latest published posts.
      */
-    private fun renderRecentPosts() {
+    private fun renderRecentUpdates() {
         supportFragmentManager
                 .beginTransaction()
-                .add(content.id, RecentPostsFragment.newInstance())
+                .add(content.id, RecentUpdatesFragment.newInstance())
                 .commit()
     }
 
